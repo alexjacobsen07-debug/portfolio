@@ -7,11 +7,14 @@ import os
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-NAV = """  <header class="site-header">
+def nav(active):
+    work_cls = ' class="active"' if active == "work" else ""
+    contact_cls = ' class="active"' if active == "contact" else ""
+    return f"""  <header class="site-header">
     <a class="logo" href="/">Alex Jacobsen</a>
     <nav>
-      <a href="/">Work</a>
-      <a href="/contact.html">Contact</a>
+      <a href="/"{work_cls}>Work</a>
+      <a href="/contact.html"{contact_cls}>Contact</a>
     </nav>
   </header>"""
 
@@ -180,7 +183,7 @@ def project_page(p):
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
-{NAV}
+{nav("work")}
 
   <main>
     <img class="project-hero" src="/images/covers/{p["slug"]}.jpg" alt="{p["title"]} cover" />
@@ -213,7 +216,7 @@ def gallery_page():
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
-{NAV}
+{nav("work")}
 
   <main>
     <h1 class="gallery-title">Work</h1>
