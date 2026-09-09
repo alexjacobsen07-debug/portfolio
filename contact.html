@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact | Alex Jacobsen</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="/">Alex Jacobsen</a>
+    <nav>
+      <a href="/">Work</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="contact-intro">
+      <h1>Contact</h1>
+      <p>Have a project in mind or just want to say hi? Fill out the form below and I'll get back to you.</p>
+    </div>
+
+    <form class="contact-form" id="contact-form">
+      <div class="field">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required autocomplete="name" />
+      </div>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required autocomplete="email" />
+      </div>
+
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required></textarea>
+      </div>
+
+      <!-- honeypot: real users never see or fill this in -->
+      <div class="field hp" aria-hidden="true">
+        <label for="company">Company</label>
+        <input type="text" id="company" name="company" tabindex="-1" autocomplete="off" />
+      </div>
+
+      <button type="submit" class="submit" id="submit-btn">Send Message</button>
+      <p class="form-status" id="form-status" role="status"></p>
+    </form>
+  </main>
+
+  <footer class="site-footer">
+    &copy; <span id="year"></span> Alex Jacobsen
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('form-status');
+    const btn = document.getElementById('submit-btn');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      status.textContent = '';
+      status.className = 'form-status';
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+
+      const data = Object.fromEntries(new FormData(form).entries());
+
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+
+        const result = await res.json().catch(() => ({}));
+
+        if (!res.ok) {
+          throw new Error(result.error || 'Something went wrong. Please try again.');
+        }
+
+        form.reset();
+        status.textContent = "Thanks — your message has been sent. I'll get back to you soon.";
+        status.className = 'form-status success';
+      } catch (err) {
+        status.textContent = err.message || 'Something went wrong. Please try again.';
+        status.className = 'form-status error';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Send Message';
+      }
+    });
+  </script>
+</body>
+</html>
