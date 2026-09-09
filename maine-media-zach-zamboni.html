@@ -7,8 +7,10 @@
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
+  <div class="site-wrap">
   <header class="site-header">
     <a class="logo" href="/">Alex Jacobsen</a>
+    <div class="site-tagline">Sports Video Production</div>
     <nav>
       <a href="/" class="active">Work</a>
       <a href="/contact.html">Contact</a>
@@ -24,9 +26,14 @@
 
     <a class="back-link" href="/">&larr; Back to all work</a>
   </main>
+  </div>
 
-  <footer class="site-footer">
-    &copy; <span class="year"></span> Alex Jacobsen
+  <footer class="site-footer-fixed">
+    <div class="inner">
+      <a href="/" class="footer-logo">Alex Jacobsen</a>
+      <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to Top</button>
+    </div>
+    <div class="footer-copy">&copy; <span class="year"></span> Alex Jacobsen. All rights reserved.</div>
   </footer>
   <script>document.querySelectorAll('.year').forEach(el => el.textContent = new Date().getFullYear());</script>
 </body>

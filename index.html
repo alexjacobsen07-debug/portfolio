@@ -7,8 +7,10 @@
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
+  <div class="site-wrap">
   <header class="site-header">
     <a class="logo" href="/">Alex Jacobsen</a>
+    <div class="site-tagline">Sports Video Production</div>
     <nav>
       <a href="/" class="active">Work</a>
       <a href="/contact.html">Contact</a>
@@ -16,66 +18,176 @@
   </header>
 
   <main>
-    <h1 class="gallery-title">Work</h1>
-    <div class="project-grid">
-      <a class="project-card" href="/level-the-playing-field.html">
+    <div class="container">
+      <section class="hero-section" id="hero">
+        <div class="hero-top">
+          <h1 class="hero-name">Alex Jacobsen</h1>
+          <p class="hero-tagline">Producing sports video content that turns raw game footage into stories worth watching.</p>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="stat-label">Role</div>
+            <div class="stat-value">Producer / Director / Editor</div>
+          </div>
+          <div>
+            <div class="stat-label">Focus</div>
+            <div class="stat-value">Sports &amp; Brand Storytelling</div>
+          </div>
+          <div>
+            <div class="stat-label">Studio</div>
+            <div class="stat-value">Hudl Studios</div>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img src="/images/covers/sierra-canyon.jpg" alt="Featured work" />
+        </div>
+      </section>
+
+      <section class="work-section" id="work">
+        <div class="work-watermark" aria-hidden="true">WORK</div>
+        <div class="work-heading-row">
+          <h2 class="work-heading">Selected work spanning brand campaigns, documentary series, and athlete profiles produced for Hudl, Gatorade, PUMA, and more.</h2>
+          <div class="work-filters">
+            <select class="filter-select" id="work-filter" aria-label="Filter work by category">
+      <option value="all">All work</option>
+      <option value="Brand Campaign">Brand Campaign</option>
+      <option value="Documentary Series">Documentary Series</option>
+      <option value="Athlete Profile">Athlete Profile</option>
+      <option value="Personal">Personal</option>
+            </select>
+          </div>
+        </div>
+        <div class="project-grid" id="project-grid">
+      <a class="project-card" href="/level-the-playing-field.html" data-category="Brand Campaign">
         <img src="/images/covers/level-the-playing-field.jpg" alt="Level the Playing Field" loading="lazy" />
+        <div class="project-card-category">Brand Campaign</div>
         <div class="project-card-title">Level the Playing Field</div>
       </a>
-      <a class="project-card" href="/puma-lamelo-ball.html">
+      <a class="project-card" href="/puma-lamelo-ball.html" data-category="Brand Campaign">
         <img src="/images/covers/puma-lamelo-ball.jpg" alt="PUMA - LaMelo Ball" loading="lazy" />
+        <div class="project-card-category">Brand Campaign</div>
         <div class="project-card-title">PUMA - LaMelo Ball</div>
       </a>
-      <a class="project-card" href="/gatorade-fueled.html">
+      <a class="project-card" href="/gatorade-fueled.html" data-category="Brand Campaign">
         <img src="/images/covers/gatorade-fueled.jpg" alt="Gatorade Fueled" loading="lazy" />
+        <div class="project-card-category">Brand Campaign</div>
         <div class="project-card-title">Gatorade Fueled</div>
       </a>
-      <a class="project-card" href="/hudl-contenders.html">
+      <a class="project-card" href="/hudl-contenders.html" data-category="Documentary Series">
         <img src="/images/covers/hudl-contenders.jpg" alt="Hudl Contenders" loading="lazy" />
+        <div class="project-card-category">Documentary Series</div>
         <div class="project-card-title">Hudl Contenders</div>
       </a>
-      <a class="project-card" href="/gatorade-highlight-themes.html">
+      <a class="project-card" href="/gatorade-highlight-themes.html" data-category="Brand Campaign">
         <img src="/images/covers/gatorade-highlight-themes.jpg" alt="Gatorade Highlight Themes" loading="lazy" />
+        <div class="project-card-category">Brand Campaign</div>
         <div class="project-card-title">Gatorade Highlight Themes</div>
       </a>
-      <a class="project-card" href="/sierra-canyon.html">
+      <a class="project-card" href="/sierra-canyon.html" data-category="Documentary Series">
         <img src="/images/covers/sierra-canyon.jpg" alt="Sierra Canyon" loading="lazy" />
+        <div class="project-card-category">Documentary Series</div>
         <div class="project-card-title">Sierra Canyon</div>
       </a>
-      <a class="project-card" href="/nfl-draft-chase-winovich.html">
+      <a class="project-card" href="/nfl-draft-chase-winovich.html" data-category="Athlete Profile">
         <img src="/images/covers/nfl-draft-chase-winovich.jpg" alt="NFL Draft - Chase Winovich" loading="lazy" />
+        <div class="project-card-category">Athlete Profile</div>
         <div class="project-card-title">NFL Draft - Chase Winovich</div>
       </a>
-      <a class="project-card" href="/scotty-pippen-jr-hudl-kicks.html">
+      <a class="project-card" href="/scotty-pippen-jr-hudl-kicks.html" data-category="Documentary Series">
         <img src="/images/covers/scotty-pippen-jr-hudl-kicks.jpg" alt="Scotty Pippen Jr - Hudl Kicks" loading="lazy" />
+        <div class="project-card-category">Documentary Series</div>
         <div class="project-card-title">Scotty Pippen Jr - Hudl Kicks</div>
       </a>
-      <a class="project-card" href="/maine-media-zach-zamboni.html">
+      <a class="project-card" href="/maine-media-zach-zamboni.html" data-category="Personal">
         <img src="/images/covers/maine-media-zach-zamboni.jpg" alt="Maine Media - Zach Zamboni" loading="lazy" />
+        <div class="project-card-category">Personal</div>
         <div class="project-card-title">Maine Media - Zach Zamboni</div>
       </a>
-      <a class="project-card" href="/hudl-top-5.html">
+      <a class="project-card" href="/hudl-top-5.html" data-category="Brand Campaign">
         <img src="/images/covers/hudl-top-5.jpg" alt="Hudl Top 5" loading="lazy" />
+        <div class="project-card-category">Brand Campaign</div>
         <div class="project-card-title">Hudl Top 5</div>
       </a>
-      <a class="project-card" href="/champs-sports.html">
+      <a class="project-card" href="/champs-sports.html" data-category="Brand Campaign">
         <img src="/images/covers/champs-sports.jpg" alt="Champs Sports" loading="lazy" />
+        <div class="project-card-category">Brand Campaign</div>
         <div class="project-card-title">Champs Sports</div>
       </a>
-      <a class="project-card" href="/grrridiron-girls.html">
+      <a class="project-card" href="/grrridiron-girls.html" data-category="Documentary Series">
         <img src="/images/covers/grrridiron-girls.jpg" alt="Grrridiron Girls" loading="lazy" />
+        <div class="project-card-category">Documentary Series</div>
         <div class="project-card-title">Grrridiron Girls</div>
       </a>
-      <a class="project-card" href="/kamaka-hepa-profile.html">
+      <a class="project-card" href="/kamaka-hepa-profile.html" data-category="Athlete Profile">
         <img src="/images/covers/kamaka-hepa-profile.jpg" alt="Kamaka Hepa Profile" loading="lazy" />
+        <div class="project-card-category">Athlete Profile</div>
         <div class="project-card-title">Kamaka Hepa Profile</div>
       </a>
+        </div>
+      </section>
+
+      <section class="services-section" id="services">
+        <h2 class="services-heading">Services</h2>
+        <div class="service-list">
+      <div class="service-item">
+        <span class="service-num">01</span>
+        <span class="service-name">Producing</span>
+        <span class="service-desc">End-to-end project management, from concept to delivery.</span>
+      </div>
+      <div class="service-item">
+        <span class="service-num">02</span>
+        <span class="service-name">Directing</span>
+        <span class="service-desc">On-set creative direction for talent, crews, and shoots.</span>
+      </div>
+      <div class="service-item">
+        <span class="service-num">03</span>
+        <span class="service-name">Shooting</span>
+        <span class="service-desc">Cinematography across studio and location productions.</span>
+      </div>
+      <div class="service-item">
+        <span class="service-num">04</span>
+        <span class="service-name">Editing</span>
+        <span class="service-desc">Post-production, pacing, and story assembly.</span>
+      </div>
+      <div class="service-item">
+        <span class="service-num">05</span>
+        <span class="service-name">Motion Design</span>
+        <span class="service-desc">Titles, graphics, and animated brand elements.</span>
+      </div>
+        </div>
+      </section>
+
+      <section class="about-section" id="about">
+        <h2 class="about-heading">About</h2>
+        <p class="about-body">Alex is a Sr. Manager at Hudl Studios, where he produces, shoots, and edits sports content for brands including Gatorade, PUMA, and Hudl itself — from Heartland Emmy-winning documentary series to campaign work built for a Gen Z audience.</p>
+      </section>
+
+      <section class="cta-section" id="contact-cta">
+        <h2 class="cta-heading">Let's work together</h2>
+        <a class="cta-button" href="/contact.html">Get in touch</a>
+      </section>
     </div>
   </main>
+  </div>
 
-  <footer class="site-footer">
-    &copy; <span class="year"></span> Alex Jacobsen
+  <footer class="site-footer-fixed">
+    <div class="inner">
+      <a href="/" class="footer-logo">Alex Jacobsen</a>
+      <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to Top</button>
+    </div>
+    <div class="footer-copy">&copy; <span class="year"></span> Alex Jacobsen. All rights reserved.</div>
   </footer>
   <script>document.querySelectorAll('.year').forEach(el => el.textContent = new Date().getFullYear());</script>
+  <script>
+    const filterSelect = document.getElementById('work-filter');
+    const cards = document.querySelectorAll('#project-grid .project-card');
+    filterSelect.addEventListener('change', () => {
+      const value = filterSelect.value;
+      cards.forEach(card => {
+        const match = value === 'all' || card.dataset.category === value;
+        card.classList.toggle('is-hidden', !match);
+      });
+    });
+  </script>
 </body>
 </html>
