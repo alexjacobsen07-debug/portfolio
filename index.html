@@ -16,15 +16,66 @@
   </header>
 
   <main>
-    <div class="contact-intro">
-      <h1>Sr. Manager, Hudl Studios</h1>
-      <p>The project gallery is being rebuilt — check back soon, or head to the contact page to get in touch.</p>
+    <h1 class="gallery-title">Work</h1>
+    <div class="project-grid">
+      <a class="project-card" href="/level-the-playing-field.html">
+        <img src="/images/covers/level-the-playing-field.jpg" alt="Level the Playing Field" loading="lazy" />
+        <div class="project-card-title">Level the Playing Field</div>
+      </a>
+      <a class="project-card" href="/puma-lamelo-ball.html">
+        <img src="/images/covers/puma-lamelo-ball.jpg" alt="PUMA - LaMelo Ball" loading="lazy" />
+        <div class="project-card-title">PUMA - LaMelo Ball</div>
+      </a>
+      <a class="project-card" href="/gatorade-fueled.html">
+        <img src="/images/covers/gatorade-fueled.jpg" alt="Gatorade Fueled" loading="lazy" />
+        <div class="project-card-title">Gatorade Fueled</div>
+      </a>
+      <a class="project-card" href="/hudl-contenders.html">
+        <img src="/images/covers/hudl-contenders.jpg" alt="Hudl Contenders" loading="lazy" />
+        <div class="project-card-title">Hudl Contenders</div>
+      </a>
+      <a class="project-card" href="/gatorade-highlight-themes.html">
+        <img src="/images/covers/gatorade-highlight-themes.jpg" alt="Gatorade Highlight Themes" loading="lazy" />
+        <div class="project-card-title">Gatorade Highlight Themes</div>
+      </a>
+      <a class="project-card" href="/sierra-canyon.html">
+        <img src="/images/covers/sierra-canyon.jpg" alt="Sierra Canyon" loading="lazy" />
+        <div class="project-card-title">Sierra Canyon</div>
+      </a>
+      <a class="project-card" href="/nfl-draft-chase-winovich.html">
+        <img src="/images/covers/nfl-draft-chase-winovich.jpg" alt="NFL Draft - Chase Winovich" loading="lazy" />
+        <div class="project-card-title">NFL Draft - Chase Winovich</div>
+      </a>
+      <a class="project-card" href="/scotty-pippen-jr-hudl-kicks.html">
+        <img src="/images/covers/scotty-pippen-jr-hudl-kicks.jpg" alt="Scotty Pippen Jr - Hudl Kicks" loading="lazy" />
+        <div class="project-card-title">Scotty Pippen Jr - Hudl Kicks</div>
+      </a>
+      <a class="project-card" href="/maine-media-zach-zamboni.html">
+        <img src="/images/covers/maine-media-zach-zamboni.jpg" alt="Maine Media - Zach Zamboni" loading="lazy" />
+        <div class="project-card-title">Maine Media - Zach Zamboni</div>
+      </a>
+      <a class="project-card" href="/hudl-top-5.html">
+        <img src="/images/covers/hudl-top-5.jpg" alt="Hudl Top 5" loading="lazy" />
+        <div class="project-card-title">Hudl Top 5</div>
+      </a>
+      <a class="project-card" href="/champs-sports.html">
+        <img src="/images/covers/champs-sports.jpg" alt="Champs Sports" loading="lazy" />
+        <div class="project-card-title">Champs Sports</div>
+      </a>
+      <a class="project-card" href="/grrridiron-girls.html">
+        <img src="/images/covers/grrridiron-girls.jpg" alt="Grrridiron Girls" loading="lazy" />
+        <div class="project-card-title">Grrridiron Girls</div>
+      </a>
+      <a class="project-card" href="/kamaka-hepa-profile.html">
+        <img src="/images/covers/kamaka-hepa-profile.jpg" alt="Kamaka Hepa Profile" loading="lazy" />
+        <div class="project-card-title">Kamaka Hepa Profile</div>
+      </a>
     </div>
   </main>
 
   <footer class="site-footer">
-    &copy; <span id="year"></span> Alex Jacobsen
+    &copy; <span class="year"></span> Alex Jacobsen
   </footer>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>document.querySelectorAll('.year').forEach(el => el.textContent = new Date().getFullYear());</script>
 </body>
 </html>

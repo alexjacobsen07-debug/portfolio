@@ -123,6 +123,119 @@ footer.site-footer {
   color: var(--text);
 }
 
+/* Project detail pages */
+.project-hero {
+  width: 100%;
+  max-height: 560px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 32px;
+  background: var(--bg-elevated);
+}
+
+.project-title {
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.project-subtitle {
+  color: var(--text-dim);
+  font-size: 15px;
+  margin-bottom: 24px;
+}
+
+.project-body {
+  max-width: 720px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #d8d8d8;
+  margin-bottom: 36px;
+  white-space: pre-line;
+}
+
+.video-embed {
+  position: relative;
+  width: 100%;
+  max-width: 860px;
+  aspect-ratio: 16 / 9;
+  margin-bottom: 24px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #000;
+}
+
+.video-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.watch-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: 860px;
+  padding: 18px 22px;
+  margin-bottom: 24px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: border-color 0.15s ease;
+}
+
+.watch-link:hover {
+  border-color: var(--accent);
+}
+
+.watch-link .play-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 14px;
+}
+
+.watch-link .watch-label {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--text);
+}
+
+.watch-link .watch-sub {
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+.video-placeholder {
+  max-width: 860px;
+  padding: 40px 24px;
+  margin-bottom: 24px;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 14px;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+.back-link:hover {
+  color: var(--accent);
+}
+
 /* Contact page */
 .contact-intro {
   max-width: 560px;

@@ -1,3 +1,6 @@
 .DS_Store
 .dev.vars
 node_modules/
+
+# raw/unoptimized source assets - not needed for the deployed site
+adobe-source/originals-covers/
