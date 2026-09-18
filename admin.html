@@ -46,7 +46,8 @@
       color: var(--muted-fg);
     }
     .admin-field input,
-    .admin-field textarea {
+    .admin-field textarea,
+    .admin-field select {
       background: var(--card-bg);
       border: 1px solid var(--border);
       padding: 10px 12px;
@@ -76,6 +77,121 @@
       color: var(--muted-fg);
       margin-bottom: 12px;
     }
+    .admin-btn-secondary {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--fg);
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .admin-btn-secondary:hover {
+      border-color: var(--fg);
+    }
+    .admin-btn-danger {
+      background: transparent;
+      border: none;
+      color: #c93b3b;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 4px 8px;
+    }
+
+    /* Media (video) editor */
+    .media-list-label {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--muted-fg);
+      margin-bottom: 8px;
+    }
+    .media-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      padding: 12px;
+      margin-bottom: 8px;
+      cursor: grab;
+    }
+    .media-item.dragging {
+      opacity: 0.4;
+    }
+    .media-drag-handle {
+      font-size: 16px;
+      color: var(--muted-fg);
+      line-height: 1;
+      padding-top: 8px;
+      user-select: none;
+    }
+    .media-item-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .media-item-row {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 8px;
+    }
+    .media-item-fields {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .media-item input,
+    .media-item select {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 8px 10px;
+      font-size: 14px;
+      font-family: inherit;
+      color: var(--fg);
+      width: 100%;
+    }
+    .media-placeholder-note {
+      font-size: 13px;
+      color: var(--muted-fg);
+      font-style: italic;
+    }
+
+    /* Hero image crop control */
+    .hero-crop {
+      position: relative;
+      width: 100%;
+      height: 240px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      cursor: crosshair;
+      background: var(--muted);
+    }
+    .hero-crop img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-crop-marker {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.5), 0 0 6px rgba(0,0,0,0.6);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .hero-crop-hint {
+      font-size: 13px;
+      color: var(--muted-fg);
+      margin-top: 8px;
+    }
+
     #password-gate {
       max-width: 360px;
       margin: 120px auto;
@@ -152,6 +268,18 @@
             <label for="hero-clients">Clients</label>
             <input id="hero-clients" />
           </div>
+          <div class="admin-field">
+            <label for="hero-image-select">Homepage photo</label>
+            <select id="hero-image-select"></select>
+          </div>
+          <div class="admin-field">
+            <label>Crop / focus point</label>
+            <div class="hero-crop" id="hero-crop">
+              <img id="hero-crop-img" alt="" />
+              <div class="hero-crop-marker" id="hero-crop-marker"></div>
+            </div>
+            <p class="hero-crop-hint">Click anywhere on the photo to set what stays in view when the page crops it.</p>
+          </div>
         </section>
 
         <section class="admin-section">
@@ -174,7 +302,7 @@
 
         <section class="admin-section" style="border-bottom: none;">
           <h2>Projects</h2>
-          <p class="admin-intro">Titles, subtitles, categories, and descriptions only — video links and cover photos aren't editable here yet.</p>
+          <p class="admin-intro">Edit each project's title, subtitle, category, description, and video links. Drag a video by its handle to reorder it on the page. Cover photos aren't editable here yet.</p>
           <div id="projects-list"></div>
         </section>
       </div>
@@ -189,6 +317,14 @@
   <script>
     let PASSWORD = '';
     let CONTENT = null;
+    let dragSource = null; // { p, m }
+
+    const MEDIA_TYPES = [
+      { value: 'youtube', label: 'YouTube' },
+      { value: 'vimeo', label: 'Vimeo' },
+      { value: 'watch_link', label: 'Watch Link (Hudl, etc.)' },
+      { value: 'placeholder', label: '"Video coming soon" placeholder' },
+    ];
 
     const gate = document.getElementById('password-gate');
     const app = document.getElementById('admin-app');
@@ -227,6 +363,8 @@
       document.getElementById('hero-focus').value = CONTENT.hero.focus;
       document.getElementById('hero-clients').value = CONTENT.hero.clients;
       document.getElementById('about-body').value = CONTENT.about;
+
+      renderHeroImagePicker();
 
       const statsList = document.getElementById('stats-list');
       statsList.innerHTML = '';
@@ -289,10 +427,185 @@
             <label>Body</label>
             <textarea data-project="${i}" data-field="body">${escapeHtml(p.body)}</textarea>
           </div>
+          <div class="admin-field">
+            <label>Videos</label>
+            <div class="media-list" id="media-list-${i}" data-project="${i}"></div>
+            <button type="button" class="admin-btn-secondary" data-add-media="${i}">+ Add Video</button>
+          </div>
         `;
         projectsList.appendChild(div);
+        renderMediaList(i);
       });
     }
+
+    function renderHeroImagePicker() {
+      const select = document.getElementById('hero-image-select');
+      select.innerHTML = CONTENT.projects
+        .map((p) => `<option value="${escapeAttr(p.slug)}">${escapeHtml(p.title)}</option>`)
+        .join('') + `<option value="${escapeAttr(CONTENT.hero.image)}">(current: ${escapeHtml(CONTENT.hero.image)})</option>`;
+
+      // avoid a duplicate option if the current image already matches a project slug
+      const seen = new Set();
+      Array.from(select.options).forEach((opt) => {
+        if (seen.has(opt.value)) opt.remove();
+        seen.add(opt.value);
+      });
+
+      select.value = CONTENT.hero.image;
+      updateHeroCropImage();
+      select.addEventListener('change', () => {
+        CONTENT.hero.image = select.value;
+        updateHeroCropImage();
+      });
+
+      const cropBox = document.getElementById('hero-crop');
+      cropBox.addEventListener('click', (e) => {
+        const rect = cropBox.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        CONTENT.hero.imagePosition = `${x.toFixed(1)}% ${y.toFixed(1)}%`;
+        applyHeroCropPosition();
+      });
+    }
+
+    function updateHeroCropImage() {
+      document.getElementById('hero-crop-img').src = `/images/covers/${CONTENT.hero.image}.jpg`;
+      applyHeroCropPosition();
+    }
+
+    function applyHeroCropPosition() {
+      const pos = CONTENT.hero.imagePosition || 'center 50%';
+      const img = document.getElementById('hero-crop-img');
+      const marker = document.getElementById('hero-crop-marker');
+      img.style.objectPosition = pos;
+
+      const parts = pos.trim().split(/\s+/);
+      const toPct = (v, axis) => {
+        if (v === 'center') return 50;
+        if (v === 'left' || v === 'top') return 0;
+        if (v === 'right' || v === 'bottom') return 100;
+        const n = parseFloat(v);
+        return isNaN(n) ? 50 : n;
+      };
+      const xPct = parts[0] !== undefined ? toPct(parts[0], 'x') : 50;
+      const yPct = parts[1] !== undefined ? toPct(parts[1], 'y') : 50;
+      marker.style.left = xPct + '%';
+      marker.style.top = yPct + '%';
+    }
+
+    function renderMediaList(pIndex) {
+      const container = document.getElementById(`media-list-${pIndex}`);
+      const media = CONTENT.projects[pIndex].media || [];
+      container.innerHTML = media.map((item, mIndex) => mediaItemHTML(pIndex, mIndex, item)).join('');
+    }
+
+    function mediaItemHTML(pIndex, mIndex, item) {
+      const type = item.type || 'placeholder';
+      let fieldsHtml = '';
+      if (type === 'youtube') {
+        fieldsHtml = `
+          <div class="media-item-fields">
+            <input data-media-field="id" placeholder="YouTube video ID (e.g. dQw4w9WgXcQ)" value="${escapeAttr(item.id)}" />
+          </div>`;
+      } else if (type === 'vimeo') {
+        fieldsHtml = `
+          <div class="media-item-fields">
+            <input data-media-field="id" placeholder="Vimeo video ID" value="${escapeAttr(item.id)}" />
+            <input data-media-field="h" placeholder="Privacy hash (optional)" value="${escapeAttr(item.h)}" />
+          </div>`;
+      } else if (type === 'watch_link') {
+        fieldsHtml = `
+          <div class="media-item-fields">
+            <input data-media-field="url" placeholder="https://www.hudl.com/video/..." value="${escapeAttr(item.url)}" />
+            <input data-media-field="label" placeholder="Button label (optional)" value="${escapeAttr(item.label)}" />
+          </div>`;
+      } else {
+        fieldsHtml = `<div class="media-placeholder-note">Shows a "Video coming soon" box on the page.</div>`;
+      }
+
+      const typeOptions = MEDIA_TYPES.map(
+        (t) => `<option value="${t.value}"${t.value === type ? ' selected' : ''}>${t.label}</option>`
+      ).join('');
+
+      return `
+        <div class="media-item" draggable="true" data-project="${pIndex}" data-media="${mIndex}">
+          <div class="media-drag-handle" title="Drag to reorder">&#8942;&#8942;</div>
+          <div class="media-item-body">
+            <div class="media-item-row">
+              <select data-media-field="type">${typeOptions}</select>
+              <button type="button" class="admin-btn-danger" data-remove-media="${pIndex}:${mIndex}">Remove</button>
+            </div>
+            ${fieldsHtml}
+          </div>
+        </div>
+      `;
+    }
+
+    // Event delegation for the whole projects list: media field edits, type
+    // changes, add/remove buttons, and drag-and-drop reordering.
+    document.getElementById('projects-list').addEventListener('input', (e) => {
+      const field = e.target.dataset.mediaField;
+      if (!field) return;
+      const item = e.target.closest('.media-item');
+      const p = Number(item.dataset.project);
+      const m = Number(item.dataset.media);
+      CONTENT.projects[p].media[m][field] = e.target.value;
+    });
+
+    document.getElementById('projects-list').addEventListener('change', (e) => {
+      if (e.target.dataset.mediaField !== 'type') return;
+      const item = e.target.closest('.media-item');
+      const p = Number(item.dataset.project);
+      const m = Number(item.dataset.media);
+      CONTENT.projects[p].media[m] = { type: e.target.value };
+      renderMediaList(p);
+    });
+
+    document.getElementById('projects-list').addEventListener('click', (e) => {
+      const addP = e.target.dataset.addMedia;
+      if (addP !== undefined) {
+        CONTENT.projects[Number(addP)].media.push({ type: 'youtube', id: '' });
+        renderMediaList(Number(addP));
+        return;
+      }
+      const removeKey = e.target.dataset.removeMedia;
+      if (removeKey !== undefined) {
+        const [p, m] = removeKey.split(':').map(Number);
+        CONTENT.projects[p].media.splice(m, 1);
+        renderMediaList(p);
+      }
+    });
+
+    document.getElementById('projects-list').addEventListener('dragstart', (e) => {
+      const item = e.target.closest('.media-item');
+      if (!item) return;
+      dragSource = { p: Number(item.dataset.project), m: Number(item.dataset.media) };
+      item.classList.add('dragging');
+    });
+
+    document.getElementById('projects-list').addEventListener('dragend', (e) => {
+      const item = e.target.closest('.media-item');
+      if (item) item.classList.remove('dragging');
+      dragSource = null;
+    });
+
+    document.getElementById('projects-list').addEventListener('dragover', (e) => {
+      if (e.target.closest('.media-item')) e.preventDefault();
+    });
+
+    document.getElementById('projects-list').addEventListener('drop', (e) => {
+      const target = e.target.closest('.media-item');
+      if (!target || !dragSource) return;
+      e.preventDefault();
+      const p = Number(target.dataset.project);
+      const targetM = Number(target.dataset.media);
+      if (p !== dragSource.p) return; // only reorder within the same project
+
+      const media = CONTENT.projects[p].media;
+      const [moved] = media.splice(dragSource.m, 1);
+      media.splice(targetM, 0, moved);
+      renderMediaList(p);
+    });
 
     function collectForm() {
       const updated = JSON.parse(JSON.stringify(CONTENT));
@@ -309,7 +622,7 @@
       document.querySelectorAll('[data-service]').forEach((el) => {
         updated.services[el.dataset.service][el.dataset.field] = el.value;
       });
-      document.querySelectorAll('[data-project]').forEach((el) => {
+      document.querySelectorAll('#projects-list > .admin-project [data-project][data-field]').forEach((el) => {
         updated.projects[el.dataset.project][el.dataset.field] = el.value;
       });
 

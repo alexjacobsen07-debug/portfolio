@@ -3,7 +3,9 @@
     "tagline": "Leading Hudl's in-house creative studio - video production, creative operations, and AI-powered systems for brand and partner content.",
     "role": "Creative Studio Leader",
     "focus": "Video Production & AI Systems",
-    "clients": "T-Mobile, Chase, Gatorade, PUMA, U.S. Army"
+    "clients": "T-Mobile, Chase, Gatorade, PUMA, U.S. Army",
+    "image": "sierra-canyon",
+    "imagePosition": "center 50%"
   },
   "stats": [
     {
@@ -52,105 +54,255 @@
       "title": "Level the Playing Field",
       "category": "Brand Campaign",
       "subtitle": "Producer/Shooter/Motion Designer",
-      "body": "Gatorade and Hudl are partnering to offer the Level the Playing Field grant. This three-year grant program will honor three deserving youth organizations in the U.S. with a suite of Hudl products customized to their individual needs."
+      "body": "Gatorade and Hudl are partnering to offer the Level the Playing Field grant. This three-year grant program will honor three deserving youth organizations in the U.S. with a suite of Hudl products customized to their individual needs.",
+      "media": [
+        {
+          "type": "watch_link",
+          "url": "https://www.hudl.com/theplayingfield",
+          "label": "hudl.com/theplayingfield"
+        },
+        {
+          "type": "youtube",
+          "id": "IjLs3xIZCi4"
+        },
+        {
+          "type": "youtube",
+          "id": "749D2zTEX0I"
+        },
+        {
+          "type": "youtube",
+          "id": "8Q9lqMPhwI8"
+        },
+        {
+          "type": "youtube",
+          "id": "7kfcM2VFFuI"
+        },
+        {
+          "type": "placeholder"
+        }
+      ]
     },
     {
       "slug": "puma-lamelo-ball",
       "title": "PUMA - LaMelo Ball",
       "category": "Brand Campaign",
       "subtitle": "Producer",
-      "body": "Part of a custom video partnership with PUMA for their release of the MB.1 shoe. We used Hudl highlights from LaMelo's high school days to help tie this campaign to a high school basketball audience in the Hudl app."
+      "body": "Part of a custom video partnership with PUMA for their release of the MB.1 shoe. We used Hudl highlights from LaMelo's high school days to help tie this campaign to a high school basketball audience in the Hudl app.",
+      "media": [
+        {
+          "type": "watch_link",
+          "url": "https://www.hudl.com/video/61bd0912041da90e445a8b71",
+          "label": "Watch on Hudl"
+        }
+      ]
     },
     {
       "slug": "gatorade-fueled",
       "title": "Gatorade Fueled",
       "category": "Brand Campaign",
       "subtitle": "Producer/Shooter/Editor",
-      "body": "Can a team's surroundings influence their style of play? Can community fuel their drive to win? Introducing Fueled — exploring how a team's competitive edge is driven by those on and off the field. One installment followed Houston's Heights High School football team, featuring an appearance and soundtrack by Houston native Tobe Nwigwe."
+      "body": "Can a team's surroundings influence their style of play? Can community fuel their drive to win? Introducing Fueled \u2014 exploring how a team's competitive edge is driven by those on and off the field. One installment followed Houston's Heights High School football team, featuring an appearance and soundtrack by Houston native Tobe Nwigwe.",
+      "media": [
+        {
+          "type": "youtube",
+          "id": "DjIDVZXSjtE"
+        },
+        {
+          "type": "youtube",
+          "id": "zyPcwAzGaAY"
+        }
+      ]
     },
     {
       "slug": "hudl-contenders",
       "title": "Hudl Contenders",
       "category": "Documentary Series",
       "subtitle": "Producer/Director/Shooter/Editor",
-      "body": "Hudl Contenders is an Hudl original content series. My team created, produced, shot and edited each piece. During its three seasons, Contenders has been sponsored by Facebook, Snapchat and Gatorade and has won two Heartland Emmy awards for best sports programming.\n\nEach week, Contenders follows two top-ranked high school football players as they prepare to face off under the lights. The docu-series produced by Hudl provides a behind-the-scenes look at the competition and admiration among the top recruits in the nation."
+      "body": "Hudl Contenders is an Hudl original content series. My team created, produced, shot and edited each piece. During its three seasons, Contenders has been sponsored by Facebook, Snapchat and Gatorade and has won two Heartland Emmy awards for best sports programming.\n\nEach week, Contenders follows two top-ranked high school football players as they prepare to face off under the lights. The docu-series produced by Hudl provides a behind-the-scenes look at the competition and admiration among the top recruits in the nation.",
+      "media": [
+        {
+          "type": "watch_link",
+          "url": "https://www.hudl.com/video/5d7be2d768991805e8b3d7a1",
+          "label": "Watch Episode 1 on Hudl"
+        },
+        {
+          "type": "watch_link",
+          "url": "https://www.hudl.com/video/5bcf7096f56a8b0e1c93e439",
+          "label": "Watch Episode 2 on Hudl"
+        },
+        {
+          "type": "watch_link",
+          "url": "https://www.hudl.com/video/59e9139c02b1c80a5034323e",
+          "label": "Watch Episode 3 on Hudl"
+        },
+        {
+          "type": "watch_link",
+          "url": "https://www.hudl.com/video/5da0b905344949068c91b1bb",
+          "label": "Watch: Kobe Hudson vs. Tank Bigsby on Hudl"
+        }
+      ]
     },
     {
       "slug": "gatorade-highlight-themes",
       "title": "Gatorade Highlight Themes",
       "category": "Brand Campaign",
       "subtitle": "Producer/editor",
-      "body": ""
+      "body": "",
+      "media": [
+        {
+          "type": "watch_link",
+          "url": "https://www.hudl.com/video/6189859c02b2150b58835c04",
+          "label": "Watch on Hudl"
+        }
+      ]
     },
     {
       "slug": "sierra-canyon",
       "title": "Sierra Canyon",
       "category": "Documentary Series",
       "subtitle": "Producer/director/shooter/editor",
-      "body": "Sierra Canyon is the most dominant program in the nation. We meet three of their star players Scotty Pippen Jr., Cassius Stanley and KJ Martin."
+      "body": "Sierra Canyon is the most dominant program in the nation. We meet three of their star players Scotty Pippen Jr., Cassius Stanley and KJ Martin.",
+      "media": [
+        {
+          "type": "watch_link",
+          "url": "https://www.hudl.com/video/5c64097a386dd90670ee4d28",
+          "label": "Watch on Hudl"
+        }
+      ]
     },
     {
       "slug": "nfl-draft-chase-winovich",
       "title": "NFL Draft - Chase Winovich",
       "category": "Athlete Profile",
       "subtitle": "Producer/shooter/editor",
-      "body": "Chase Winovich has been chasing his dream of playing in the NFL since he was 7 years old. Because of his work ethic, that dream is now within reach."
+      "body": "Chase Winovich has been chasing his dream of playing in the NFL since he was 7 years old. Because of his work ethic, that dream is now within reach.",
+      "media": [
+        {
+          "type": "watch_link",
+          "url": "https://www.hudl.com/video/5cc0d3e76e8bf90e30d6a7d5",
+          "label": "Watch on Hudl"
+        }
+      ]
     },
     {
       "slug": "scotty-pippen-jr-hudl-kicks",
       "title": "Scotty Pippen Jr - Hudl Kicks",
       "category": "Documentary Series",
       "subtitle": "Producer/director/shooter/editor",
-      "body": ""
+      "body": "",
+      "media": [
+        {
+          "type": "watch_link",
+          "url": "https://www.hudl.com/video/5c8fc1d8386dd91c74ded76d",
+          "label": "Watch Part 1 on Hudl"
+        },
+        {
+          "type": "watch_link",
+          "url": "https://www.hudl.com/video/5c7d88e123481e1bd85d7038",
+          "label": "Watch Part 2 on Hudl"
+        },
+        {
+          "type": "watch_link",
+          "url": "https://www.hudl.com/video/5c86a8406e8bf91828da8431",
+          "label": "Watch Part 3 on Hudl"
+        }
+      ]
     },
     {
       "slug": "maine-media-zach-zamboni",
       "title": "Maine Media - Zach Zamboni",
       "category": "Personal",
       "subtitle": "",
-      "body": "To further my education, I attended a non-fiction cinematography course taught by renowned videographer Zach Zamboni. Zach has won 3 Primetime Emmy Awards, and earned 5 nominations for Non-Fiction Cinematography. His series, Parts Unknown, has won the Peabody Award."
+      "body": "To further my education, I attended a non-fiction cinematography course taught by renowned videographer Zach Zamboni. Zach has won 3 Primetime Emmy Awards, and earned 5 nominations for Non-Fiction Cinematography. His series, Parts Unknown, has won the Peabody Award.",
+      "media": [
+        {
+          "type": "placeholder"
+        }
+      ]
     },
     {
       "slug": "hudl-top-5",
       "title": "Hudl Top 5",
       "category": "Brand Campaign",
       "subtitle": "Producer/editor",
-      "body": "The Gen Z athlete is looking for short, bite-sized content, so we've adjusted Top 5 to match their viewing habits. Each play is distributed independently, as snackable content, improving brand touch points and engagement on Hudl and Instagram."
+      "body": "The Gen Z athlete is looking for short, bite-sized content, so we've adjusted Top 5 to match their viewing habits. Each play is distributed independently, as snackable content, improving brand touch points and engagement on Hudl and Instagram.",
+      "media": [
+        {
+          "type": "watch_link",
+          "url": "https://www.hudl.com/page/top-5-football/videos",
+          "label": "Watch on Hudl"
+        }
+      ]
     },
     {
       "slug": "champs-sports",
       "title": "Champs Sports",
       "category": "Brand Campaign",
       "subtitle": "Producer/editor",
-      "body": "Champs x Reebok Crossover Campaign. Objective: Leverage Hudl to drive awareness of Reebok Basketball as well as Allen Iverson product drops. In this campaign, we sourced user-created Hudl highlights mixed with beauty product shots of Allen Iverson's new shoe, which I shot in our studio."
+      "body": "Champs x Reebok Crossover Campaign. Objective: Leverage Hudl to drive awareness of Reebok Basketball as well as Allen Iverson product drops. In this campaign, we sourced user-created Hudl highlights mixed with beauty product shots of Allen Iverson's new shoe, which I shot in our studio.",
+      "media": [
+        {
+          "type": "placeholder"
+        },
+        {
+          "type": "placeholder"
+        }
+      ]
     },
     {
       "slug": "grrridiron-girls",
       "title": "Grrridiron Girls",
       "category": "Documentary Series",
       "subtitle": "Producer/director/editor",
-      "body": ""
+      "body": "",
+      "media": [
+        {
+          "type": "watch_link",
+          "url": "https://www.hudl.com/video/60f6de560dca580c14c12266",
+          "label": "Watch on Hudl"
+        }
+      ]
     },
     {
       "slug": "kamaka-hepa-profile",
       "title": "Kamaka Hepa Profile",
       "category": "Athlete Profile",
       "subtitle": "Producer/director/shooter/editor",
-      "body": "Growing up in Barrow, Alaska, the most northern city in the United States, Kamaka Hepa knew what he had to do to get to the next level. What would you be willing to sacrifice?"
+      "body": "Growing up in Barrow, Alaska, the most northern city in the United States, Kamaka Hepa knew what he had to do to get to the next level. What would you be willing to sacrifice?",
+      "media": [
+        {
+          "type": "watch_link",
+          "url": "https://www.hudl.com/video/5a943f0202b1c82658a05f58",
+          "label": "Watch on Hudl"
+        }
+      ]
     },
     {
       "slug": "ai-powered-reports",
       "title": "AI-Powered Reports",
       "category": "Systems & AI",
       "subtitle": "Creative Direction / Systems Design",
-      "body": "A look at one of the AI-assisted systems built inside Hudl's in-house creative studio — turning raw data into branded, ready-to-publish reports automatically, part of a broader effort to scale content output without scaling headcount."
+      "body": "A look at one of the AI-assisted systems built inside Hudl's in-house creative studio \u2014 turning raw data into branded, ready-to-publish reports automatically, part of a broader effort to scale content output without scaling headcount.",
+      "media": [
+        {
+          "type": "vimeo",
+          "id": "1219915768",
+          "h": "d303b6de5d"
+        }
+      ]
     },
     {
       "slug": "walk-the-walk-lance-haas",
       "title": "Walk the Walk: Lance Haas",
       "category": "Athlete Profile",
       "subtitle": "Producer/Director/Editor",
-      "body": "An installment of Hudl's Walk the Walk series, profiling Lance Haas at Mountain View High School."
+      "body": "An installment of Hudl's Walk the Walk series, profiling Lance Haas at Mountain View High School.",
+      "media": [
+        {
+          "type": "youtube",
+          "id": "0h9lWdz_ii4"
+        }
+      ]
     }
   ]
 }

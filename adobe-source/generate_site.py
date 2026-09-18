@@ -84,79 +84,29 @@ def watch_link(url, label="Watch on Hudl"):
 def video_placeholder():
     return '''  <div class="video-placeholder">Video coming soon</div>'''
 
-# Video/media embeds aren't edited through the admin page (too varied to make
-# a friendly form for), so they stay hardcoded here, keyed by project slug.
-PROJECT_MEDIA = {
-    "level-the-playing-field": [
-        watch_link("https://www.hudl.com/theplayingfield", "hudl.com/theplayingfield"),
-        youtube_embed("IjLs3xIZCi4"),
-        youtube_embed("749D2zTEX0I"),
-        youtube_embed("8Q9lqMPhwI8"),
-        youtube_embed("7kfcM2VFFuI"),
-        video_placeholder(),
-    ],
-    "puma-lamelo-ball": [
-        watch_link("https://www.hudl.com/video/61bd0912041da90e445a8b71"),
-    ],
-    "gatorade-fueled": [
-        youtube_embed("DjIDVZXSjtE"),
-        youtube_embed("zyPcwAzGaAY"),
-    ],
-    "hudl-contenders": [
-        watch_link("https://www.hudl.com/video/5d7be2d768991805e8b3d7a1", "Watch Episode 1 on Hudl"),
-        watch_link("https://www.hudl.com/video/5bcf7096f56a8b0e1c93e439", "Watch Episode 2 on Hudl"),
-        watch_link("https://www.hudl.com/video/59e9139c02b1c80a5034323e", "Watch Episode 3 on Hudl"),
-        watch_link("https://www.hudl.com/video/5da0b905344949068c91b1bb", "Watch: Kobe Hudson vs. Tank Bigsby on Hudl"),
-    ],
-    "gatorade-highlight-themes": [
-        watch_link("https://www.hudl.com/video/6189859c02b2150b58835c04"),
-    ],
-    "sierra-canyon": [
-        watch_link("https://www.hudl.com/video/5c64097a386dd90670ee4d28"),
-    ],
-    "nfl-draft-chase-winovich": [
-        watch_link("https://www.hudl.com/video/5cc0d3e76e8bf90e30d6a7d5"),
-    ],
-    "scotty-pippen-jr-hudl-kicks": [
-        watch_link("https://www.hudl.com/video/5c8fc1d8386dd91c74ded76d", "Watch Part 1 on Hudl"),
-        watch_link("https://www.hudl.com/video/5c7d88e123481e1bd85d7038", "Watch Part 2 on Hudl"),
-        watch_link("https://www.hudl.com/video/5c86a8406e8bf91828da8431", "Watch Part 3 on Hudl"),
-    ],
-    "maine-media-zach-zamboni": [
-        video_placeholder(),
-    ],
-    "hudl-top-5": [
-        watch_link("https://www.hudl.com/page/top-5-football/videos"),
-    ],
-    "champs-sports": [
-        video_placeholder(),
-        video_placeholder(),
-    ],
-    "grrridiron-girls": [
-        watch_link("https://www.hudl.com/video/60f6de560dca580c14c12266"),
-    ],
-    "kamaka-hepa-profile": [
-        watch_link("https://www.hudl.com/video/5a943f0202b1c82658a05f58"),
-    ],
-    "ai-powered-reports": [
-        vimeo_embed("1219915768", h="d303b6de5d"),
-    ],
-    "walk-the-walk-lance-haas": [
-        youtube_embed("0h9lWdz_ii4"),
-    ],
-}
+def render_media_item(item):
+    """Render one media entry from content.json (edited via /admin.html) to HTML."""
+    t = item.get("type")
+    if t == "youtube":
+        return youtube_embed(item["id"])
+    if t == "vimeo":
+        return vimeo_embed(item["id"], h=item.get("h") or None)
+    if t == "watch_link":
+        return watch_link(item["url"], item.get("label") or "Watch on Hudl")
+    return video_placeholder()
 
-# Text content (titles, categories, body copy, hero/about/services/stats) comes
-# from content.json, which the admin page (/admin.html) edits and commits back
-# to the repo via the save-content Function.
+# All editable content (titles, categories, body copy, video links, hero/about/
+# services/stats) comes from content.json, which the admin page (/admin.html)
+# edits and commits back to the repo via the save-content Function.
 PROJECTS = [
-    {**p, "media": PROJECT_MEDIA[p["slug"]]}
+    {**p, "media": [render_media_item(m) for m in p.get("media", [])]}
     for p in CONTENT["projects"]
 ]
 
 SERVICES = [(s["name"], s["desc"]) for s in CONTENT["services"]]
 STATS = [(s["value"], s["label"]) for s in CONTENT["stats"]]
-HERO_IMAGE = "sierra-canyon"
+HERO_IMAGE = CONTENT["hero"].get("image", "sierra-canyon")
+HERO_IMAGE_POSITION = CONTENT["hero"].get("imagePosition", "center 50%")
 HERO_TAGLINE = CONTENT["hero"]["tagline"]
 HERO_ROLE = CONTENT["hero"]["role"]
 HERO_FOCUS = CONTENT["hero"]["focus"]
@@ -269,7 +219,7 @@ def gallery_page():
           </div>
         </div>
         <div class="hero-image">
-          <img src="/images/covers/{HERO_IMAGE}.jpg" alt="Featured work" />
+          <img src="/images/covers/{HERO_IMAGE}.jpg" alt="Featured work" style="object-position: {HERO_IMAGE_POSITION};" />
         </div>
       </section>
 
