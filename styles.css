@@ -69,8 +69,10 @@ a:hover {
 header.site-header {
   position: relative;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  row-gap: 8px;
   max-width: var(--maxw);
   margin: 0 auto;
   padding: 16px var(--gutter);
@@ -78,7 +80,7 @@ header.site-header {
 }
 
 header.site-header .logo {
-  font-size: clamp(16px, 1.4vw + 10px, 24px);
+  font-size: clamp(15px, 1.4vw + 9px, 24px);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: -0.01em;
@@ -108,8 +110,14 @@ header.site-header .site-tagline {
 header.site-header nav {
   display: flex;
   align-items: center;
-  gap: 22px;
+  gap: 14px;
   z-index: 1;
+}
+
+@media (min-width: 480px) {
+  header.site-header nav {
+    gap: 22px;
+  }
 }
 
 header.site-header nav a {
@@ -149,6 +157,22 @@ footer.site-footer-fixed .inner {
   align-items: center;
   font-size: 14px;
   font-weight: 600;
+}
+
+footer.site-footer-fixed .footer-left {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+footer.site-footer-fixed .footer-left a:not(.footer-logo) {
+  color: var(--bg);
+  font-weight: 500;
+  opacity: 0.85;
+}
+
+footer.site-footer-fixed .footer-left a:not(.footer-logo):hover {
+  opacity: 1;
 }
 
 footer.site-footer-fixed .footer-logo {
@@ -239,6 +263,38 @@ footer.site-footer-fixed .footer-copy {
   height: clamp(280px, 42vw, 560px);
   object-fit: cover;
   background: var(--muted);
+}
+
+/* Stats */
+.stats-section {
+  padding: 56px 0 8px;
+  border-top: 1px solid var(--border);
+  margin-top: 56px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+@media (min-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.stat-tile-value {
+  font-size: clamp(28px, 2.4vw + 16px, 44px);
+  font-weight: 600;
+  line-height: 1;
+}
+
+.stat-tile-label {
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted-fg);
 }
 
 /* Work section */
