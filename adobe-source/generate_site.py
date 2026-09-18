@@ -6,9 +6,14 @@ Design language borrowed from a RAUM Studio (Lovable) template Alex remixed:
 Inter type, phi-scaled headline sizes, warm light-gray palette, fixed
 reveal-on-scroll footer, watermark section heading, filterable work grid.
 """
+import json
 import os
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+with open(os.path.join(ROOT, "content.json")) as f:
+    CONTENT = json.load(f)
+
 TAGLINE = "Creative Studio Leader, Hudl"
 SITE_URL = "https://alexjacobsen.pages.dev"
 LINKEDIN_URL = "https://www.linkedin.com/in/alexjacobsen/"
@@ -79,201 +84,84 @@ def watch_link(url, label="Watch on Hudl"):
 def video_placeholder():
     return '''  <div class="video-placeholder">Video coming soon</div>'''
 
+# Video/media embeds aren't edited through the admin page (too varied to make
+# a friendly form for), so they stay hardcoded here, keyed by project slug.
+PROJECT_MEDIA = {
+    "level-the-playing-field": [
+        watch_link("https://www.hudl.com/theplayingfield", "hudl.com/theplayingfield"),
+        youtube_embed("IjLs3xIZCi4"),
+        youtube_embed("749D2zTEX0I"),
+        youtube_embed("8Q9lqMPhwI8"),
+        youtube_embed("7kfcM2VFFuI"),
+        video_placeholder(),
+    ],
+    "puma-lamelo-ball": [
+        watch_link("https://www.hudl.com/video/61bd0912041da90e445a8b71"),
+    ],
+    "gatorade-fueled": [
+        youtube_embed("DjIDVZXSjtE"),
+        youtube_embed("zyPcwAzGaAY"),
+    ],
+    "hudl-contenders": [
+        watch_link("https://www.hudl.com/video/5d7be2d768991805e8b3d7a1", "Watch Episode 1 on Hudl"),
+        watch_link("https://www.hudl.com/video/5bcf7096f56a8b0e1c93e439", "Watch Episode 2 on Hudl"),
+        watch_link("https://www.hudl.com/video/59e9139c02b1c80a5034323e", "Watch Episode 3 on Hudl"),
+        watch_link("https://www.hudl.com/video/5da0b905344949068c91b1bb", "Watch: Kobe Hudson vs. Tank Bigsby on Hudl"),
+    ],
+    "gatorade-highlight-themes": [
+        watch_link("https://www.hudl.com/video/6189859c02b2150b58835c04"),
+    ],
+    "sierra-canyon": [
+        watch_link("https://www.hudl.com/video/5c64097a386dd90670ee4d28"),
+    ],
+    "nfl-draft-chase-winovich": [
+        watch_link("https://www.hudl.com/video/5cc0d3e76e8bf90e30d6a7d5"),
+    ],
+    "scotty-pippen-jr-hudl-kicks": [
+        watch_link("https://www.hudl.com/video/5c8fc1d8386dd91c74ded76d", "Watch Part 1 on Hudl"),
+        watch_link("https://www.hudl.com/video/5c7d88e123481e1bd85d7038", "Watch Part 2 on Hudl"),
+        watch_link("https://www.hudl.com/video/5c86a8406e8bf91828da8431", "Watch Part 3 on Hudl"),
+    ],
+    "maine-media-zach-zamboni": [
+        video_placeholder(),
+    ],
+    "hudl-top-5": [
+        watch_link("https://www.hudl.com/page/top-5-football/videos"),
+    ],
+    "champs-sports": [
+        video_placeholder(),
+        video_placeholder(),
+    ],
+    "grrridiron-girls": [
+        watch_link("https://www.hudl.com/video/60f6de560dca580c14c12266"),
+    ],
+    "kamaka-hepa-profile": [
+        watch_link("https://www.hudl.com/video/5a943f0202b1c82658a05f58"),
+    ],
+    "ai-powered-reports": [
+        vimeo_embed("1219915768", h="d303b6de5d"),
+    ],
+    "walk-the-walk-lance-haas": [
+        youtube_embed("0h9lWdz_ii4"),
+    ],
+}
+
+# Text content (titles, categories, body copy, hero/about/services/stats) comes
+# from content.json, which the admin page (/admin.html) edits and commits back
+# to the repo via the save-content Function.
 PROJECTS = [
-    {
-        "slug": "level-the-playing-field",
-        "title": "Level the Playing Field",
-        "category": "Brand Campaign",
-        "subtitle": "Producer/Shooter/Motion Designer",
-        "body": "Gatorade and Hudl are partnering to offer the Level the Playing Field grant. This three-year grant program will honor three deserving youth organizations in the U.S. with a suite of Hudl products customized to their individual needs.",
-        "media": [
-            watch_link("https://www.hudl.com/theplayingfield", "hudl.com/theplayingfield"),
-            youtube_embed("IjLs3xIZCi4"),
-            youtube_embed("749D2zTEX0I"),
-            youtube_embed("8Q9lqMPhwI8"),
-            youtube_embed("7kfcM2VFFuI"),
-            video_placeholder(),
-        ],
-    },
-    {
-        "slug": "puma-lamelo-ball",
-        "title": "PUMA - LaMelo Ball",
-        "category": "Brand Campaign",
-        "subtitle": "Producer",
-        "body": "Part of a custom video partnership with PUMA for their release of the MB.1 shoe. We used Hudl highlights from LaMelo's high school days to help tie this campaign to a high school basketball audience in the Hudl app.",
-        "media": [
-            watch_link("https://www.hudl.com/video/61bd0912041da90e445a8b71"),
-        ],
-    },
-    {
-        "slug": "gatorade-fueled",
-        "title": "Gatorade Fueled",
-        "category": "Brand Campaign",
-        "subtitle": "Producer/Shooter/Editor",
-        "body": "Can a team's surroundings influence their style of play? Can community fuel their drive to win? Introducing Fueled — exploring how a team's competitive edge is driven by those on and off the field. One installment followed Houston's Heights High School football team, featuring an appearance and soundtrack by Houston native Tobe Nwigwe.",
-        "media": [
-            youtube_embed("DjIDVZXSjtE"),
-            youtube_embed("zyPcwAzGaAY"),
-        ],
-    },
-    {
-        "slug": "hudl-contenders",
-        "title": "Hudl Contenders",
-        "category": "Documentary Series",
-        "subtitle": "Producer/Director/Shooter/Editor",
-        "body": "Hudl Contenders is an Hudl original content series. My team created, produced, shot and edited each piece. During its three seasons, Contenders has been sponsored by Facebook, Snapchat and Gatorade and has won two Heartland Emmy awards for best sports programming.\n\nEach week, Contenders follows two top-ranked high school football players as they prepare to face off under the lights. The docu-series produced by Hudl provides a behind-the-scenes look at the competition and admiration among the top recruits in the nation.",
-        "media": [
-            watch_link("https://www.hudl.com/video/5d7be2d768991805e8b3d7a1", "Watch Episode 1 on Hudl"),
-            watch_link("https://www.hudl.com/video/5bcf7096f56a8b0e1c93e439", "Watch Episode 2 on Hudl"),
-            watch_link("https://www.hudl.com/video/59e9139c02b1c80a5034323e", "Watch Episode 3 on Hudl"),
-            watch_link("https://www.hudl.com/video/5da0b905344949068c91b1bb", "Watch: Kobe Hudson vs. Tank Bigsby on Hudl"),
-        ],
-    },
-    {
-        "slug": "gatorade-highlight-themes",
-        "title": "Gatorade Highlight Themes",
-        "category": "Brand Campaign",
-        "subtitle": "Producer/editor",
-        "body": "",
-        "media": [
-            watch_link("https://www.hudl.com/video/6189859c02b2150b58835c04"),
-        ],
-    },
-    {
-        "slug": "sierra-canyon",
-        "title": "Sierra Canyon",
-        "category": "Documentary Series",
-        "subtitle": "Producer/director/shooter/editor",
-        "body": "Sierra Canyon is the most dominant program in the nation. We meet three of their star players Scotty Pippen Jr., Cassius Stanley and KJ Martin.",
-        "media": [
-            watch_link("https://www.hudl.com/video/5c64097a386dd90670ee4d28"),
-        ],
-    },
-    {
-        "slug": "nfl-draft-chase-winovich",
-        "title": "NFL Draft - Chase Winovich",
-        "category": "Athlete Profile",
-        "subtitle": "Producer/shooter/editor",
-        "body": "Chase Winovich has been chasing his dream of playing in the NFL since he was 7 years old. Because of his work ethic, that dream is now within reach.",
-        "media": [
-            watch_link("https://www.hudl.com/video/5cc0d3e76e8bf90e30d6a7d5"),
-        ],
-    },
-    {
-        "slug": "scotty-pippen-jr-hudl-kicks",
-        "title": "Scotty Pippen Jr - Hudl Kicks",
-        "category": "Documentary Series",
-        "subtitle": "Producer/director/shooter/editor",
-        "body": "",
-        "media": [
-            watch_link("https://www.hudl.com/video/5c8fc1d8386dd91c74ded76d", "Watch Part 1 on Hudl"),
-            watch_link("https://www.hudl.com/video/5c7d88e123481e1bd85d7038", "Watch Part 2 on Hudl"),
-            watch_link("https://www.hudl.com/video/5c86a8406e8bf91828da8431", "Watch Part 3 on Hudl"),
-        ],
-    },
-    {
-        "slug": "maine-media-zach-zamboni",
-        "title": "Maine Media - Zach Zamboni",
-        "category": "Personal",
-        "subtitle": "",
-        "body": "To further my education, I attended a non-fiction cinematography course taught by renowned videographer Zach Zamboni. Zach has won 3 Primetime Emmy Awards, and earned 5 nominations for Non-Fiction Cinematography. His series, Parts Unknown, has won the Peabody Award.",
-        "media": [
-            video_placeholder(),
-        ],
-    },
-    {
-        "slug": "hudl-top-5",
-        "title": "Hudl Top 5",
-        "category": "Brand Campaign",
-        "subtitle": "Producer/editor",
-        "body": "The Gen Z athlete is looking for short, bite-sized content, so we've adjusted Top 5 to match their viewing habits. Each play is distributed independently, as snackable content, improving brand touch points and engagement on Hudl and Instagram.",
-        "media": [
-            watch_link("https://www.hudl.com/page/top-5-football/videos"),
-        ],
-    },
-    {
-        "slug": "champs-sports",
-        "title": "Champs Sports",
-        "category": "Brand Campaign",
-        "subtitle": "Producer/editor",
-        "body": "Champs x Reebok Crossover Campaign. Objective: Leverage Hudl to drive awareness of Reebok Basketball as well as Allen Iverson product drops. In this campaign, we sourced user-created Hudl highlights mixed with beauty product shots of Allen Iverson's new shoe, which I shot in our studio.",
-        "media": [
-            video_placeholder(),
-            video_placeholder(),
-        ],
-    },
-    {
-        "slug": "grrridiron-girls",
-        "title": "Grrridiron Girls",
-        "category": "Documentary Series",
-        "subtitle": "Producer/director/editor",
-        "body": "",
-        "media": [
-            watch_link("https://www.hudl.com/video/60f6de560dca580c14c12266"),
-        ],
-    },
-    {
-        "slug": "kamaka-hepa-profile",
-        "title": "Kamaka Hepa Profile",
-        "category": "Athlete Profile",
-        "subtitle": "Producer/director/shooter/editor",
-        "body": "Growing up in Barrow, Alaska, the most northern city in the United States, Kamaka Hepa knew what he had to do to get to the next level. What would you be willing to sacrifice?",
-        "media": [
-            watch_link("https://www.hudl.com/video/5a943f0202b1c82658a05f58"),
-        ],
-    },
-    {
-        "slug": "ai-powered-reports",
-        "title": "AI-Powered Reports",
-        "category": "Systems & AI",
-        "subtitle": "Creative Direction / Systems Design",
-        "body": "A look at one of the AI-assisted systems built inside Hudl's in-house creative studio — turning raw data into branded, ready-to-publish reports automatically, part of a broader effort to scale content output without scaling headcount.",
-        "media": [
-            vimeo_embed("1219915768", h="d303b6de5d"),
-        ],
-    },
-    {
-        "slug": "walk-the-walk-lance-haas",
-        "title": "Walk the Walk: Lance Haas",
-        "category": "Athlete Profile",
-        "subtitle": "Producer/Director/Editor",
-        "body": "An installment of Hudl's Walk the Walk series, profiling Lance Haas at Mountain View High School.",
-        "media": [
-            youtube_embed("0h9lWdz_ii4"),
-        ],
-    },
+    {**p, "media": PROJECT_MEDIA[p["slug"]]}
+    for p in CONTENT["projects"]
 ]
 
-SERVICES = [
-    ("Creative Direction", "Leading concept-to-delivery for brand and partner campaigns."),
-    ("Production Management", "Running the full pipeline: intake, scoping, scheduling, delivery."),
-    ("AI-Assisted Workflows", "Building systems that scale output without scaling headcount."),
-    ("Shooting & Editing", "Hands-on cinematography and post-production."),
-    ("Motion Design", "Templated and custom graphics at scale."),
-]
-
-STATS = [
-    ("11", "Years at Hudl"),
-    ("80%", "Faster turnaround via AI-assisted editing"),
-    ("2,000+", "Templated motion-graphics assets"),
-    ("30+", "Branded packages delivered weekly"),
-]
-
+SERVICES = [(s["name"], s["desc"]) for s in CONTENT["services"]]
+STATS = [(s["value"], s["label"]) for s in CONTENT["stats"]]
 HERO_IMAGE = "sierra-canyon"
-
-HERO_TAGLINE = "Leading Hudl's in-house creative studio — video production, creative operations, and AI-powered systems for brand and partner content."
-
-ABOUT_BODY = (
-    "Alex leads Hudl's in-house creative studio — the video team behind brand and partner "
-    "content, from concept through delivery. Over 11 years at Hudl, he's grown from producer "
-    "to studio leader, delivering campaigns for T-Mobile, Chase, Gatorade, PUMA, and the U.S. "
-    "Army, and managing the studio's enterprise vendor stack (DAM, music licensing, transfer "
-    "and review infrastructure). To scale output without scaling headcount, he's built "
-    "AI-assisted editing workflows that cut turnaround time 80% across 30+ weekly branded "
-    "packages, a library of 2,000+ templated motion-graphics assets, and an intake pipeline "
-    "that automatically turns requests into scoped briefs. He's a 2x Heartland Emmy winner "
-    "for sports programming."
-)
+HERO_TAGLINE = CONTENT["hero"]["tagline"]
+HERO_ROLE = CONTENT["hero"]["role"]
+HERO_FOCUS = CONTENT["hero"]["focus"]
+HERO_CLIENTS = CONTENT["hero"]["clients"]
+ABOUT_BODY = CONTENT["about"]
 
 def project_page(p):
     media_html = "\n".join(p["media"])
@@ -369,15 +257,15 @@ def gallery_page():
         <div class="hero-stats">
           <div>
             <div class="stat-label">Role</div>
-            <div class="stat-value">Creative Studio Leader</div>
+            <div class="stat-value">{HERO_ROLE}</div>
           </div>
           <div>
             <div class="stat-label">Focus</div>
-            <div class="stat-value">Video Production &amp; AI Systems</div>
+            <div class="stat-value">{HERO_FOCUS}</div>
           </div>
           <div>
             <div class="stat-label">Clients</div>
-            <div class="stat-value">T-Mobile, Chase, Gatorade, PUMA, U.S. Army</div>
+            <div class="stat-value">{HERO_CLIENTS}</div>
           </div>
         </div>
         <div class="hero-image">
