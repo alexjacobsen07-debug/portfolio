@@ -72,6 +72,11 @@ def vimeo_embed(video_id, h=None):
     <iframe src="{src}" title="Vimeo video" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" allowfullscreen loading="lazy"></iframe>
   </div>'''
 
+def hudl_embed(video_id):
+    return f'''  <div class="video-embed">
+    <iframe src="https://www.hudl.com/embed/video/{video_id}" title="Hudl video" allowfullscreen loading="lazy"></iframe>
+  </div>'''
+
 def watch_link(url, label="Watch on Hudl"):
     return f'''  <a class="watch-link" href="{url}" target="_blank" rel="noopener">
     <span class="play-icon">&#9654;</span>
@@ -91,6 +96,8 @@ def render_media_item(item):
         return youtube_embed(item["id"])
     if t == "vimeo":
         return vimeo_embed(item["id"], h=item.get("h") or None)
+    if t == "hudl":
+        return hudl_embed(item["id"])
     if t == "watch_link":
         return watch_link(item["url"], item.get("label") or "Watch on Hudl")
     return video_placeholder()

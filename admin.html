@@ -322,7 +322,8 @@
     const MEDIA_TYPES = [
       { value: 'youtube', label: 'YouTube' },
       { value: 'vimeo', label: 'Vimeo' },
-      { value: 'watch_link', label: 'Watch Link (Hudl, etc.)' },
+      { value: 'hudl', label: 'Hudl (plays on this site)' },
+      { value: 'watch_link', label: 'Watch Link (opens on Hudl.com)' },
       { value: 'placeholder', label: '"Video coming soon" placeholder' },
     ];
 
@@ -512,6 +513,11 @@
           <div class="media-item-fields">
             <input data-media-field="id" placeholder="Vimeo video ID" value="${escapeAttr(item.id)}" />
             <input data-media-field="h" placeholder="Privacy hash (optional)" value="${escapeAttr(item.h)}" />
+          </div>`;
+      } else if (type === 'hudl') {
+        fieldsHtml = `
+          <div class="media-item-fields">
+            <input data-media-field="id" placeholder="Hudl video ID (from hudl.com/embed/video/THIS-PART)" value="${escapeAttr(item.id)}" />
           </div>`;
       } else if (type === 'watch_link') {
         fieldsHtml = `
