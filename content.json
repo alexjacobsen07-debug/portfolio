@@ -1,24 +1,51 @@
 {
   "hero": {
-    "tagline": "Leading Hudl's in-house creative studio — video production, creative operations, and AI-powered systems for brand and partner content.",
+    "tagline": "Leading Hudl's in-house creative studio - video production, creative operations, and AI-powered systems for brand and partner content.",
     "role": "Creative Studio Leader",
     "focus": "Video Production & AI Systems",
     "clients": "T-Mobile, Chase, Gatorade, PUMA, U.S. Army"
   },
   "stats": [
-    { "value": "11", "label": "Years at Hudl" },
-    { "value": "80%", "label": "Faster turnaround via AI-assisted editing" },
-    { "value": "2,000+", "label": "Templated motion-graphics assets" },
-    { "value": "30+", "label": "Branded packages delivered weekly" }
+    {
+      "value": "11",
+      "label": "Years at Hudl"
+    },
+    {
+      "value": "80%",
+      "label": "Faster turnaround via AI-assisted editing"
+    },
+    {
+      "value": "2,000+",
+      "label": "Templated motion-graphics assets"
+    },
+    {
+      "value": "30+",
+      "label": "Branded packages delivered weekly"
+    }
   ],
   "services": [
-    { "name": "Creative Direction", "desc": "Leading concept-to-delivery for brand and partner campaigns." },
-    { "name": "Production Management", "desc": "Running the full pipeline: intake, scoping, scheduling, delivery." },
-    { "name": "AI-Assisted Workflows", "desc": "Building systems that scale output without scaling headcount." },
-    { "name": "Shooting & Editing", "desc": "Hands-on cinematography and post-production." },
-    { "name": "Motion Design", "desc": "Templated and custom graphics at scale." }
+    {
+      "name": "Creative Direction",
+      "desc": "Leading concept-to-delivery for brand and partner campaigns."
+    },
+    {
+      "name": "Production Management",
+      "desc": "Running the full pipeline: intake, scoping, scheduling, delivery."
+    },
+    {
+      "name": "AI-Assisted Workflows",
+      "desc": "Building systems that scale output without scaling headcount."
+    },
+    {
+      "name": "Shooting & Editing",
+      "desc": "Hands-on cinematography and post-production."
+    },
+    {
+      "name": "Motion Design",
+      "desc": "Templated and custom graphics at scale."
+    }
   ],
-  "about": "Alex leads Hudl's in-house creative studio — the video team behind brand and partner content, from concept through delivery. Over 11 years at Hudl, he's grown from producer to studio leader, delivering campaigns for T-Mobile, Chase, Gatorade, PUMA, and the U.S. Army, and managing the studio's enterprise vendor stack (DAM, music licensing, transfer and review infrastructure). To scale output without scaling headcount, he's built AI-assisted editing workflows that cut turnaround time 80% across 30+ weekly branded packages, a library of 2,000+ templated motion-graphics assets, and an intake pipeline that automatically turns requests into scoped briefs. He's a 2x Heartland Emmy winner for sports programming.",
+  "about": "I lead Hudl's in-house creative studio. That's the video team behind our brand and partner content, from first concept to final delivery. I've been at Hudl for over 11 years, starting as a core video producer and growing into leading and managing the studio, and along the way I've delivered campaigns for T-Mobile, Chase, Gatorade, PUMA, and the U.S. Army. I also run our enterprise vendor stack: DAM, music licensing, transfer and review infrastructure.\n\nIn-house studios can't just hire their way out of more demand, so I've focused on building systems instead. I built AI-assisted editing workflows that cut our turnaround time by 80% across 30+ branded packages a week. I also built a library of 2,000+ templated motion-graphics assets and an intake pipeline that automatically turns incoming requests into scoped briefs. I'm a 2x Heartland Emmy winner for sports programming.",
   "projects": [
     {
       "slug": "level-the-playing-field",
