@@ -5,7 +5,7 @@
     "focus": "Video Production & AI Systems",
     "clients": "T-Mobile, Chase, Gatorade, PUMA, U.S. Army",
     "image": "sierra-canyon",
-    "imagePosition": "center 50%"
+    "imagePosition": "54.0% 22.9%"
   },
   "stats": [
     {
@@ -57,11 +57,6 @@
       "body": "Gatorade and Hudl are partnering to offer the Level the Playing Field grant. This three-year grant program will honor three deserving youth organizations in the U.S. with a suite of Hudl products customized to their individual needs.",
       "media": [
         {
-          "type": "watch_link",
-          "url": "https://www.hudl.com/theplayingfield",
-          "label": "hudl.com/theplayingfield"
-        },
-        {
           "type": "youtube",
           "id": "IjLs3xIZCi4"
         },
@@ -101,7 +96,7 @@
       "title": "Gatorade Fueled",
       "category": "Brand Campaign",
       "subtitle": "Producer/Shooter/Editor",
-      "body": "Can a team's surroundings influence their style of play? Can community fuel their drive to win? Introducing Fueled \u2014 exploring how a team's competitive edge is driven by those on and off the field. One installment followed Houston's Heights High School football team, featuring an appearance and soundtrack by Houston native Tobe Nwigwe.",
+      "body": "Can a team's surroundings influence their style of play? Can community fuel their drive to win? Introducing Fueled — exploring how a team's competitive edge is driven by those on and off the field. One installment followed Houston's Heights High School football team, featuring an appearance and soundtrack by Houston native Tobe Nwigwe.",
       "media": [
         {
           "type": "youtube",
@@ -282,7 +277,7 @@
       "title": "AI-Powered Reports",
       "category": "Systems & AI",
       "subtitle": "Creative Direction / Systems Design",
-      "body": "A look at one of the AI-assisted systems built inside Hudl's in-house creative studio \u2014 turning raw data into branded, ready-to-publish reports automatically, part of a broader effort to scale content output without scaling headcount.",
+      "body": "A look at one of the AI-assisted systems built inside Hudl's in-house creative studio — turning raw data into branded, ready-to-publish reports automatically, part of a broader effort to scale content output without scaling headcount.",
       "media": [
         {
           "type": "vimeo",
